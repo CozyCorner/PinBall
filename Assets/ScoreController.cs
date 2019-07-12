@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreController : MonoBehaviour {
@@ -23,27 +24,28 @@ public class ScoreController : MonoBehaviour {
 	private void OnCollisionEnter(Collision other) {
 		Debug.Log("Collision");
 
-		if (tag == "SmallStarTag") {
+		if (other.gameObject.tag == "SmallStarTag") {
 			score += 10;
 			Debug.Log("SmallStarTag");
 		}
 
-		else if (tag == "LargeStarTag") {
+		else if (other.gameObject.tag == "LargeStarTag") {
 			score += 30;
 			Debug.Log("LargeStarTag");
 		}
 			
-		else if (tag == "SmallCloudTag") {
+		else if (other.gameObject.tag == "SmallCloudTag") {
 			score += 20;
 			Debug.Log("SmallCloudTag");
 		}
 
-		else if (tag == "LargeCloudTag") {
+		else if (other.gameObject.tag == "LargeCloudTag") {
 			score += 50;
 			Debug.Log("LargeCloudTag");
 		}
 
 		Debug.Log(score);
+
 		this.scoreText.GetComponent<Text> ().text = "Score " + score + "pt";
 	}
 
